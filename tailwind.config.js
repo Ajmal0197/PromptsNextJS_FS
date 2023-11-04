@@ -1,3 +1,5 @@
+//This configuration file is essential for tailoring Tailwind CSS to match the design requirements of your web application.
+//It's often used to define custom colors, fonts, spacing, and other styling parameters, ensuring that your application's styles are consistent and optimized for performance.
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -12,7 +14,7 @@ module.exports = {
         inter: ["Inter", "sans-serif"],
       },
       colors: {
-        "primary-orange": "#FF5722",
+        "primary-orange": "#FF5722", //changing default primary color to this
       },
     },
   },

@@ -5,6 +5,25 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 
+/*
+#signIn:
+This function is used to sign in a user.
+It typically takes authentication provider credentials (e.g., email and password) or other relevant information.
+After a successful sign-in, it sets up the user session.
+
+#signOut:
+This function is used to sign out the current user.
+It ends the user's session and logs them out.
+
+#useSession:
+This is a hook used to access the user's session information.
+It allows you to check if a user is authenticated, and if so, provides user-related information.
+
+#getProviders:
+This function is used to retrieve a list of available authentication providers.
+It can be helpful if you want to offer multiple ways for users to sign in, such as email and password, Google, Facebook, etc.
+*/
+
 const Nav = () => {
   const { data: session } = useSession();
 
@@ -18,7 +37,7 @@ const Nav = () => {
     })();
   }, []);
 
-  console.log("----------providers----------", providers, session);
+  // console.log("----------providers----------", providers, session?.user);
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -139,21 +158,3 @@ const Nav = () => {
 };
 
 export default Nav;
-/*
-#signIn:
-This function is used to sign in a user.
-It typically takes authentication provider credentials (e.g., email and password) or other relevant information.
-After a successful sign-in, it sets up the user session.
-
-#signOut:
-This function is used to sign out the current user.
-It ends the user's session and logs them out.
-
-#useSession:
-This is a hook used to access the user's session information.
-It allows you to check if a user is authenticated, and if so, provides user-related information.
-
-#getProviders:
-This function is used to retrieve a list of available authentication providers.
-It can be helpful if you want to offer multiple ways for users to sign in, such as email and password, Google, Facebook, etc.
-*/

@@ -2,6 +2,8 @@ import Nav from "@components/Nav";
 import AuthSessionProvider from "@components/Provider";
 import "@styles/globals.css";
 
+//The metadata object is used in a Next.js application to define essential information like the page title and description for
+//improved SEO, user experience, and accessibility.
 export const metadata = {
   title: "PromptProvider",
   description: "Discover & Share AI Prompts",

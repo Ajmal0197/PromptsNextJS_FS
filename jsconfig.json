@@ -1,3 +1,5 @@
+// we can import like this also now --- e.g: import AuthSessionProvider from "@components/Provider";
+
 {
   "compilerOptions": {
     "paths": {
