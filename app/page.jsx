@@ -12,7 +12,7 @@ const Home = () => {
       <p className="desc text-center">
         Unleash your creativity with the AI Prompt Generator, your ultimate
         source of inspiration for writing, art, programming, and more. Whether
-        you're a writer seeking fresh story ideas, an artist looking for new
+        you&apos;re a writer seeking fresh story ideas, an artist looking for new
         visual concepts, or a developer in need of coding challenges, our
       </p>
 

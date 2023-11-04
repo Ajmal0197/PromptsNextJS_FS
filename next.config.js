@@ -2,11 +2,18 @@
 //helping you tailor the application to your specific needs and take advantage of new features while optimizing performance.
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+  optimizeFonts: true,
   experimental: {
     serverComponentsExternalPackages: ["mongoose"],
   },
   images: {
-    domains: ["lh3.googleusercontent.com"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "lh3.googleusercontent.com",
+      },
+    ],
   },
   webpack(config) {
     config.experiments = {
@@ -15,6 +22,9 @@ const nextConfig = {
     };
     return config;
   },
+  // eslint: {
+  //   ignoreDuringBuilds: true,
+  // },
 };
 
 module.exports = nextConfig;
