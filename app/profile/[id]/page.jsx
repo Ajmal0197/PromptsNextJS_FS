@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import Profile from "@components/Profile";
 
 const UserProfile = ({ params }) => {
+// router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
   const searchParams = useSearchParams();
   const userName = searchParams.get("name");
 
