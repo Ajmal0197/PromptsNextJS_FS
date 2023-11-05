@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export const GET = async (request) => {
   try {
     await connectToDB(); //in nextjs api call we need to connect every time to db because here it acts as lambda function(ie: server dies after api is called)
-    const prompts = await Prompt.find({}).populate("creator"); //populate is a common practice when dealing with MongoDB and Mongoose, especially when you have relationships between collections and you want to retrieve data from multiple collections in a single query.
+    const prompts = await Prompt.find({}).populate("creator"); //The "creator" field in a MongoDB schema represents a relationship with another model through its ObjectId, and "populate" in MongoDB is a method to retrieve and fill in the details of the related "User" model when querying the data, connecting the two models based on the ObjectId reference.
     return NextResponse.json(prompts, { status: 200 }); //or: return new Response(JSON.stringify(prompts), { status: 200 })
   } catch (error) {
     console.log(error);
