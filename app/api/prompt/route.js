@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export const GET = async (request) => {
   try {
     await connectToDB(); //in nextjs api call we need to connect every time to db because here it acts as lambda function(ie: server dies after api is called)
-    const prompts = await Prompt.find({}).populate("creator"); //In this code, populate('creator') tells Mongoose to replace the creator field in the retrieved documents with the actual "User" documents based on the ObjectId references. This allows you to work with the referenced documents as if they were embedded directly in your query results. //The "creator" field is likely a reference to the "User" collection, so this operation fetches user-related data for each prompt. 
+    const prompts = await Prompt.find({}).populate("creator"); //In MongoDB, the Mongoose library provides a method called populate that allows you to retrieve documents from referenced collections based on the ObjectId references in your documents. The populate method is particularly useful when you have relationships between documents, such as when you have a field that stores ObjectId references to documents in another collection, which you want to retrieve and embed in your query results.
     return NextResponse.json(prompts, { status: 200 }); //or: return new Response(JSON.stringify(prompts), { status: 200 })
   } catch (error) {
     console.log(error);
