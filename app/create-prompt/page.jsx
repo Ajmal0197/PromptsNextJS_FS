@@ -28,6 +28,9 @@ const CreatePrompt = () => {
 
       if (response.ok) {
         router.push("/");
+
+        // revalidatePath("/");//can be used in action files  //https://nextjs.org/learn/dashboard-app/mutating-data#6-revalidate-and-redirect
+        // redirect("/");
       }
     } catch (error) {
       console.log(error);

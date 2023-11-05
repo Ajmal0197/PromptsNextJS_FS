@@ -10,8 +10,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        satoshi: ["Satoshi", "sans-serif"],
-        inter: ["Inter", "sans-serif"],
+        sans: ["var(--font-inter)"],
+        mono: ["var(--font-roboto-mono)"],
       },
       colors: {
         "primary-orange": "#FF5722", //changing default primary color to this

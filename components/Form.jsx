@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"; //https://nextjs.org/learn/dashboard-app/navigating-between-pages#the-link-component
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
   return (

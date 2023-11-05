@@ -1,0 +1,14 @@
+/* CSS Modules: Create locally scoped CSS classes to avoid naming conflicts and improve maintainability. */
+
+/* USAGE:       
+import styles from '@/app/ui/home.module.css';
+<div className={styles.shape}></div>;
+*/
+
+.shape {
+    height: 0;
+    width: 0;
+    border-bottom: 30px solid black;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+  }

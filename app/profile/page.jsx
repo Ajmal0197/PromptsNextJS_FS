@@ -2,7 +2,7 @@
 
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 import Profile from "@components/Profile";
 
 const MyProfile = () => {
@@ -25,7 +25,11 @@ const MyProfile = () => {
   }, [session?.user.id]);
 
   const handleEdit = (post) => {
-    router.push(`/update-prompt?id=${post._id}`); //navigating to this url
+    if (post._id) {
+      router.push(`/update-prompt?id=${post._id}`); //navigating to this url
+    } else {
+      notFound(); //https://nextjs.org/learn/dashboard-app/error-handling#handling-404-errors-with-the-notfound-function
+    }
   };
 
   const handleDelete = async (post) => {

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation"; //https://nextjs.org/learn/dashboard-app/navigating-between-pages#pattern-showing-active-links
+import clsx from "clsx"; //https://nextjs.org/learn/dashboard-app/css-styling#using-the-clsx-library-to-toggle-class-names
 
 const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
   const { data: session } = useSession();
@@ -33,13 +34,17 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
           className="flex-1 flex justify-start items-center gap-3 cursor-pointer"
           onClick={handleProfileClick}
         >
-          <Image
-            src={post.creator.image}
-            alt="user_image"
-            width={40}
-            height={40}
-            className="rounded-full object-contain"
-          />
+          {/* https://nextjs.org/learn/dashboard-app/streaming#streaming-a-component
+          You can use Suspense to wait for asynchronous data fetching operations to complete before rendering a component. This helps ensure that data is available and the component can render with the latest information. It's often used with libraries like React Query or SWR for data fetching. */}
+          <Suspense fallback={<div>Loading...</div>}>
+            <Image
+              src={post.creator.image}
+              alt="user_image"
+              width={40}
+              height={40}
+              className="rounded-full object-contain"
+            />
+          </Suspense>
 
           <div className="flex flex-col">
             <h3 className="font-satoshi font-semibold text-gray-900">
@@ -51,7 +56,12 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }) => {
           </div>
         </div>
 
-        <div className="copy_btn" onClick={handleCopy}>
+        <div
+          className={clsx("copy_btn", {
+            "from-blue-600": copied === post.prompt,
+          })}
+          onClick={handleCopy}
+        >
           <Image
             src={
               copied === post.prompt

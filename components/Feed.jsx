@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import PromptCard from "./PromptCard";
+import { lusitana } from "@app/ui/font";
 
 const PromptCardList = ({ data, handleTagClick }) => {
   return (
@@ -81,7 +82,7 @@ const Feed = () => {
           value={searchText}
           onChange={handleSearchChange}
           required
-          className="search_input peer"
+          className={`search_input peer ${lusitana.className}`} //adding a secondary font
         />
       </form>
 

@@ -1,3 +1,5 @@
+// https://nextjs.org/learn/dashboard-app/adding-authentication
+
 // Import the NextAuth library for authentication
 import NextAuth from "next-auth";
 // Import the GoogleProvider for authentication using Google

@@ -1,9 +1,9 @@
 import Nav from "@components/Nav";
 import AuthSessionProvider from "@components/Provider";
-import "@styles/globals.css";
+import "@/app/ui/global.css";
+import { inter, roboto_mono } from "@/app/ui/font.js";
 
-//The metadata object is used in a Next.js application to define essential information like the page title and description for
-//improved SEO, user experience, and accessibility.
+//In the component, you define the metadata object, which contains default metadata tags for your application. The title property specifies the title of your application, while the description property provides a brief description. These metadata tags are important for search engine optimization (SEO) and can be overridden for specific routes if needed.
 export const metadata = {
   title: "PromptProvider",
   description: "Discover & Share AI Prompts",
@@ -11,7 +11,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable} ${roboto_mono.variable}`}>
       <body>
         <AuthSessionProvider>
           <div className="main">
@@ -28,3 +28,5 @@ const RootLayout = ({ children }) => {
 };
 
 export default RootLayout;
+
+//STEP BY STEP LEARNING: https://nextjs.org/learn/dashboard-app/getting-started
