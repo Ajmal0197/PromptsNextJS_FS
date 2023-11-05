@@ -23,7 +23,7 @@ Global CSS: Simple to use and familiar for those experienced with traditional CS
 }
 
 .main:before {
-  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, #fafafa 100%);
+  background: radial-gradient(circle, rgba(2, 0, 36, 0) 0, rgb(221, 245, 211)100%);
   position: absolute;
   content: "";
   z-index: 2;
@@ -152,7 +152,7 @@ Global CSS: Simple to use and familiar for those experienced with traditional CS
 
 /* PromptCard Component */
 .prompt_card {
-  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-white/20 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
+  @apply flex-1 break-inside-avoid rounded-lg border border-gray-300 bg-yellow-200 bg-clip-padding p-6 pb-4 backdrop-blur-lg backdrop-filter md:w-[360px] w-full h-fit;
 }
 
 .flex-center {

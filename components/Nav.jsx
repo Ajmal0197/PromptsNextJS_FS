@@ -49,7 +49,7 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">Promptopia</p>
+        <p className="logo_text">PromptProvider</p>
       </Link>
 
       {/* Desktop Navigation */}
