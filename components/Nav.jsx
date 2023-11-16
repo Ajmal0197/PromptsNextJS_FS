@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
+import { ThemeContext } from "@context/ThemeContext";
 
 /*
 #signIn:
@@ -26,7 +27,7 @@ It can be helpful if you want to offer multiple ways for users to sign in, such 
 
 const Nav = () => {
   const { data: session } = useSession();
-
+  const { toggle, mode } = useContext(ThemeContext);
   const [providers, setProviders] = useState(null);
   const [toggleDropdown, setToggleDropdown] = useState(false);
 
@@ -36,8 +37,6 @@ const Nav = () => {
       setProviders(res);
     })();
   }, []);
-
-  // console.log("----------providers----------", providers, session?.user);
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
@@ -59,6 +58,14 @@ const Nav = () => {
             <Link href="/create-prompt" className="black_btn">
               Create Post
             </Link>
+
+            <button
+              type="button"
+              onClick={toggle}
+              className={mode === "light" ? "outline_btn" : "black_btn"}
+            >
+              {mode.toUpperCase() + " Mode"}
+            </button>
 
             <button type="button" onClick={signOut} className="outline_btn">
               Sign Out

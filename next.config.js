@@ -28,3 +28,15 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+// ANOTHER WAY
+// const nextConfig = {
+//   images: {
+//     //https://nextjs.org/docs/app/api-reference/components/image#domains
+//     //next doesnot allow external image urls(for eg: https://images.pexels.com/photos/18900657) unless its domain is mentioned here
+//     //we can add multiple domains
+//     domains: ["images.pexels.com"],
+//   },
+// };
+
+// module.exports = nextConfig;

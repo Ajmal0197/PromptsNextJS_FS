@@ -63,6 +63,20 @@ Global CSS: Simple to use and familiar for those experienced with traditional CS
   opacity: 0.15;
 }
 
+.theme{
+  transition: 1s all ease;
+}
+
+.light {
+  background-color: white;
+  color: #111;
+}
+
+.dark {
+  background-color: #111;
+  color: #bbb;
+}
+
 @media screen and (max-width: 640px) {
   .main {
     padding: 0;
