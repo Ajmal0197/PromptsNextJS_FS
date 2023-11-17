@@ -12,3 +12,13 @@ import styles from '@/app/ui/home.module.css';
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
   }
+
+  .item:nth-child(2n+1) {
+    flex-direction: row-reverse; /* Reverses the direction of flex items for odd-numbered occurrences */
+  }
+  /* USAGE:
+        {data.map((item) => (
+          <div className={styles.item} key={item.id}/>
+        ))}
+  */
+  

@@ -6,6 +6,7 @@ import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import User from "@models/user";
 import { connectToDB } from "@utils/database";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 // Create a handler for authentication using NextAuth
 const handler = NextAuth({
@@ -16,6 +17,72 @@ const handler = NextAuth({
     GoogleProvider({
       clientId: process.env.GOOGLE_ID, // Read the Google client ID from environment variables
       clientSecret: process.env.GOOGLE_CLIENT_SECRET, // Read the Google client secret from environment variables
+    }),
+    // GithubProvider({
+    //   clientId: process.env.GITHUB_ID,
+    //   clientSecret: process.env.GITHUB_SECRET,
+    // }),
+
+    // USAGE:
+    // signIn("credentials", { //"credentials" = "id" in CredentialsProvider
+    //   email,
+    //   password,
+    // });
+    // signOut() //will make user unauthenticated
+    // register API: app/api/auth/register/route.js
+    /*
+
+    MAKING PROTECTED ROUTE:
+      import { useSession } from "next-auth/react";
+      const session = useSession();
+
+      if (session.status === "loading") {
+        return <p>Loading...</p>;
+      }
+
+      if (session.status === "unauthenticated") {
+        router?.push("/dashboard/login");
+      }
+
+      if (session.status === "authenticated") {
+        router?.push("/");
+      }
+    */
+
+    //for logging in without 3rd party provider (ie registration)
+    //below will authenticate user we can check it using "useSession" Hook in component
+    CredentialsProvider({
+      id: "credentials", // Unique identifier for this provider
+      name: "Credentials", // Human-readable name for the provider
+      async authorize(credentials) {
+        //credentials contains users request
+        //Check if the user exists.
+        await connect();
+
+        try {
+          const user = await User.findOne({
+            email: credentials.email,
+          });
+
+          // If the user exists, check if the provided password is correct
+          if (user) {
+            const isPasswordCorrect = await bcrypt.compare(
+              credentials.password,
+              user.password
+            );
+
+            if (isPasswordCorrect) {
+              return user;
+            } else {
+              throw new Error("Wrong Credentials!");
+            }
+          } else {
+            throw new Error("User not found!");
+          }
+        } catch (err) {
+          throw new Error(err);
+        }
+      },
     }),
   ],
 
@@ -51,6 +118,10 @@ const handler = NextAuth({
         return false; // Indicate a failed sign-in
       }
     },
+  },
+
+  pages: {
+    error: "/", // on error in authentication go to dashboard
   },
 });
 

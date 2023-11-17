@@ -2,6 +2,16 @@ import Prompt from "@models/prompt";
 import { connectToDB } from "@utils/database";
 import { NextResponse } from "next/server";
 
+// we can get search params like below
+//For eg:
+// const { data, mutate, error, isLoading } = useSWR(
+//   `/api/posts?username=${session?.data?.user.name}`,
+//   fetcher
+// );
+// USAGE:
+// > const url = new URL(request.url);
+// > const username = url.searchParams.get("username");
+
 //get particular prompt data
 export const GET = async (request, { params }) => {
   try {

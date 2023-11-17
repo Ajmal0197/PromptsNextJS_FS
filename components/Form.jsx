@@ -1,6 +1,20 @@
 import Link from "next/link"; //https://nextjs.org/learn/dashboard-app/navigating-between-pages#the-link-component
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }) => {
+  /*
+  Another way:
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const email = e.target[0].value;
+    const password = e.target[1].value;
+
+    signIn("credentials", {
+      email,
+      password,
+    });
+  };
+*/
+
   return (
     <section className="w-full max-w-full flex-start flex-col">
       <h1 className="head_text text-left">

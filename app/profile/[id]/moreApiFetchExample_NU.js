@@ -58,6 +58,25 @@ const BlogPost = async ({ params }) => {
   //     `/api/posts?username=${session?.data?.user.name}`,
   //     fetcher
   //   );
+  //Here -> mutate: The mutate function is provided by SWR and is used to re-fetch the data.
+  // If you make changes to the data locally (for example, after a user submits a new post), you can call mutate() to re-fetch the data from the server and update the local state.
+  // For Eg:
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   const title = e.target[0].value;
+  //   try {
+  //     await fetch("/api/posts", {
+  //       method: "POST",
+  //       body: JSON.stringify({
+  //         username: session.data.user.name,
+  //       }),
+  //     });
+  //     mutate(); //MUTATE USED
+  //     e.target.reset() //resets the input field
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   return (
     <div className={styles.container}>

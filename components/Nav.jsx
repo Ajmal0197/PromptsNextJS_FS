@@ -34,9 +34,12 @@ const Nav = () => {
   useEffect(() => {
     (async () => {
       const res = await getProviders();
+      delete res.credentials;
       setProviders(res);
     })();
   }, []);
+
+  console.log("providersproviders", providers);
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">
